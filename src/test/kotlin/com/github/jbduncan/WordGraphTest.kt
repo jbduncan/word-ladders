@@ -13,7 +13,7 @@ class WordGraphTest {
     fun newWordGraph() {
         assertThrows<IllegalArgumentException> { WordGraph(0) }
         assertThrows<IllegalArgumentException> { WordGraph(-1) }
-        assertFalse(WordGraph(4).isDirected)
+        assertTrue(WordGraph(4).isDirected)
         assertFalse(WordGraph(4).allowsSelfLoops())
         assertEquals(ElementOrder.insertion<String>(), WordGraph(4).nodeOrder())
     }
@@ -22,8 +22,7 @@ class WordGraphTest {
     fun include() {
         val wordGraph = WordGraph(4)
 
-        wordGraph.include("neat")
-        wordGraph.include("near")
+        wordGraph.include("neat", "near")
 
         assertEquals(setOf("neat", "near"), wordGraph.nodes())
         assertTrue(wordGraph.hasEdgeConnecting("neat", "near"))

@@ -30,7 +30,7 @@ class MainTest {
             "[head held hell tell tall tail]",
             "[head read reid raid rail tail]"
         )
-        assertTrue(output.toString().trim() in validAnswers)
+        assertEquals(validAnswers, output.toString().trim().split("\n").toSet())
         assertEquals(0, exitCode)
     }
 
@@ -53,3 +53,34 @@ class MainTest {
         assertEquals("Failed to read word list: wuh oh", err.toString().trim())
     }
 }
+
+internal val DICTIONARY = """
+        bear
+        beat
+        beet
+        fear
+        feat
+        feet
+        fool
+        hail
+        hair
+        hall
+        head
+        heal
+        hear
+        heat
+        heir
+        held
+        hell
+        nail
+        neal
+        neil
+        raid
+        rail
+        read
+        reid
+        tail
+        tall
+        teal
+        tell
+    """.trimIndent()
